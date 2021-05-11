@@ -6,6 +6,10 @@ body {
 h1 {
     color: white;
 }
+.custom-align-right {
+    text-align: right;
+}
+
 .contain {
     width: 100%;
     height: 80vh;   
@@ -101,8 +105,11 @@ h1 {
     backdrop-filter: blur(3px);
     /* box-shadow: 0 2px 15px rgb(0, 0, 0, 0.2); */
 }
-.spotlight, .board, .game{
+.custom-margin {
     margin: 15% 13% 5%;
+}
+.custom-top-margin {
+    margin-top: 100px;
 }
 
 .card {
@@ -142,7 +149,7 @@ h1 {
     padding: 15%;
     /* width: 80%; */
 }
-.board-member-name {
+.card-bottom-text {
     position: absolute;
     top: 20%;
     left: 5%; 
@@ -164,7 +171,7 @@ h1 {
     .card-label, .card {
         border-radius: 10px;
     }
-    .board-member-name {
+    .card-bottom-text {
         position: absolute;
         top: 20%;
         left: 5%; 
@@ -173,7 +180,7 @@ h1 {
     }
 }
 
-.game h1 {
+.custom-h1 {
     font-family: 'Shrikhand', cursive;
     font-size: 3.5rem;
     color: orange;
@@ -183,6 +190,7 @@ h1 {
     width: 30vw;
     height: 30vw;
     object-fit: contain;
+    filter: blur(20px);
 }
 .answer {
     margin-top: 5%;
@@ -216,3 +224,12 @@ h1 {
     text-align: center;
 }
 
+/* treasure hunt ------------------------------------------------------------------------*/
+
+#rightAnsAlert, #wrongAnsAlert, #errorAnsAlert {
+    display: none;
+}
+
+.btn-close {
+    float: right;
+}

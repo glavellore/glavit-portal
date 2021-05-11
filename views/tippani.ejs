@@ -68,8 +68,8 @@
 
     <section class="main">
 
-        <div class="game">
-            <h1 class="mb-4">ટિપ્પણી</h1>
+        <div class="custom-margin">
+            <h1 class="custom-h1 mb-4">ટિપ્પણી</h1>
             <form name="google-sheet" method="post" class="row">
                 <div class="mb-3 col-lg-6 mx-auto">
                     <label for="name" class="form-label">Name</label>
@@ -86,7 +86,7 @@
                     <div class="carousel-inner">
                         
                       <div class="carousel-item active">
-                          <div class="question-img"><img src="images/q1.jpg" class="d-block mx-auto" alt="..."></div>
+                          <div class="question-img"><img id="q1" src="images/q1.jpg" class="d-block mx-auto" alt="..."></div>
                           <div class="answer col-sm-8 mx-auto">
                             <div class="mb-3">
                                 <label for="exampleFormControlTextarea1" class="form-label">Caption It!</label>
@@ -95,7 +95,7 @@
                           </div>
                       </div>
                       <div class="carousel-item">
-                        <div class="question-img"><img src="images/q2.jpg" class="d-block mx-auto" alt="..."></div>
+                        <div class="question-img"><img id="q2" src="images/q2.jpg" class="d-block mx-auto" alt="..."></div>
                         <div class="answer col-sm-8 mx-auto">
                           <div class="mb-3">
                               <label for="exampleFormControlTextarea2" class="form-label">Caption It!</label>
@@ -104,7 +104,7 @@
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <div class="question-img"><img src="images/q3.jpg" class="d-block mx-auto" alt="..."></div>
+                        <div class="question-img"><img id="q3" src="images/q3.jpg" class="d-block mx-auto" alt="..."></div>
                         <div class="answer col-sm-8 mx-auto">
                           <div class="mb-3">
                               <label for="exampleFormControlTextarea3" class="form-label">Caption It!</label>
@@ -150,6 +150,8 @@
                 .then(response => window.location.replace("./response"))
                 .catch(error => console.error('Error!', error.message))
             });
+
+
     </script>
     <script src="script.js"></script>
     

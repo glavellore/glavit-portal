@@ -68,88 +68,46 @@
 
     
     <section class="main">
-        <div class="custom-margin">
-            <% if(alert.length > 0){ %>
 
-                <div class="alert alert-primary alert-dismissible fade show col-lg-6 col-md-8 colo-sm-10 mx-auto" role="alert">
-                    <%= alert %>
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        <div class="custom-margin">
+            <h1 class="custom-h1 mb-4">Clue me in</h1>
+            <p class="text-center my-5">Clue <%= question.number %></p>
+            <form name="" method="post" action="/hunt/next">
+              <div class="row">
+                <div class="alert alert-primary col-lg-6 col-md-8 colo-sm-10 mx-auto" id="rightAnsAlert" role="alert">
+                  Voila! your ans is correct. You can go to next clue by clicking on submit.
+                  <button type="button" class="btn-close" onclick="closeAlert('rightAnsAlert')"></button>
                 </div>
               
-              <% } %>
+                <div class="alert alert-warning col-lg-6 col-md-8 colo-sm-10 mx-auto" id="wrongAnsAlert" role="alert">
+                  Wrong! Try again, you can do it
+                  <button type="button" class="btn-close" onclick="closeAlert('wrongAnsAlert')"></button>
+                </div>
+
+                <div class="alert alert-warning col-lg-6 col-md-8 colo-sm-10 mx-auto" id="errorAnsAlert" role="alert">
+                  Retry with same answer, some error occured.
+                  <button type="button" class="btn-close" onclick="closeAlert('errorAnsAlert')"></button>
+                </div>
+              </div>
+              
+              <h5 class="mb-3 col-lg-6 mx-auto"><%= question.question %></h5>
+              <input type="hidden" class="form-control" id="question" name="question" value="<%= question.number %>">
+              <div class="mb-3 col-lg-6 mx-auto">
+                  <label for="name" class="form-label">Decode it</label>
+                  <input type="text" class="form-control" id="answerInput" name="answer" required autocomplete="off">
+              </div>
+              
+              <div class="row">
+              <button id="submitBtn" type="submit" class="btn btn-warning my-4 col-lg-3 col-md-4 col-sm-10 mx-auto">Submit</button>
+              </div>
+            </form>
             
-            <h1>Spotlight</h1>
-
-            <% if(spotlight.length > 0){ %>
-
-                <% spotlight.forEach(element => { %>
-
-                    <div class="card col-lg-6 col-md-8 col-sm-8">
-                        <div class="img-container">
-                            <img src="<%= element.path %>" alt="" class="card-img">
-                        </div>
-                        <div class="card-label">
-                            <a role="button" href="<%= element.href %>" class="btn btn-warning my-auto">Open</a>
-                        </div>
-                    </div>
-
-                <% }); %>
-
-            <% } else { %>   
-                <h3 class="col-lg-4 col-md-6 col-sm-6 col-8 ms-auto custom-top-margin custom-align-right">Stay tuned to our social media for upcoming events</h3>
-                <img src="images/gla_events/no_events.svg" class="col-lg-4 col-md-6 col-sm-6 col-8 me-auto custom-top-margin" alt="">
-            <% } %>
-            <h1 class="custom-top-margin">Previous events</h1>
-            
-            <% prev.forEach(element => { %>
-
-                <div class="card col-lg-3 col-md-4 col-sm-8 p-0">
-                    <div class="img-container">
-                        <img src="<%= element.path %>" alt="" class="card-img">
-                    </div>
-                    <div class="card-label">
-                        <span class="card-bottom-text"><%= element.name %></span>
-                    </div>
-                </div>
-
-            <% }); %>
-            
-            <div class="board row">
-                <h1 class="custom-top-margin">Board 20-21</h1>
-                <div class="card col-lg-3 col-md-4 col-sm-8 p-0">
-                    <div class="img-container">
-                        <img src="images/m1.png" alt="" class="card-img">
-                    </div>
-                    <div class="card-label">
-                        <span class="card-bottom-text">Arka Gohil</span>
-                    </div>
-                </div>
-                <div class="card col-lg-3 col-md-4 col-sm-6 p-0">
-                    <div class="img-container">
-                        <img src="images/m2.png" alt="" class="card-img">
-                    </div>
-                    <div class="card-label">
-                        <span class="card-bottom-text">Preet Shah</span>
-                    </div>
-                </div>
-                <div class="card col-lg-3 col-md-4 col-sm-6 p-0">
-                    <div class="img-container">
-                        <img src="images/m3.jpg" alt="" class="card-img">
-                    </div>
-                    <div class="card-label">
-                        <span class="card-bottom-text">Awadh Vyas</span>
-                    </div>
-                </div>
-                <div class="card col-lg-3 col-md-4 col-sm-6 p-0">
-                    <div class="img-container">
-                        <img src="images/m4.png" alt="" class="card-img">
-                    </div>
-                    <div class="card-label">
-                        <span class="card-bottom-text">Pruthu Trivedi</span>
-                    </div>
-                </div>
+            <div class="row">
+              <button type="button" class="btn btn-light my-4 col-lg-3 col-md-4 col-sm-10 mx-auto" onclick="requestServer()">Check Ans</button>
             </div>
         </div>
+
+       
     </section>
 
     <section id="footer">
@@ -159,7 +117,7 @@
     </section>
 
     <script src="script.js"></script>
-    
+    <script src="gla_hunt/script.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
 </body>

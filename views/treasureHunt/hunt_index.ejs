@@ -68,7 +68,9 @@
 
     
     <section class="main">
+
         <div class="custom-margin">
+            <h1 class="custom-h1 mb-4">The Treasure</h1>
             <% if(alert.length > 0){ %>
 
                 <div class="alert alert-primary alert-dismissible fade show col-lg-6 col-md-8 colo-sm-10 mx-auto" role="alert">
@@ -77,79 +79,24 @@
                 </div>
               
               <% } %>
-            
-            <h1>Spotlight</h1>
-
-            <% if(spotlight.length > 0){ %>
-
-                <% spotlight.forEach(element => { %>
-
-                    <div class="card col-lg-6 col-md-8 col-sm-8">
-                        <div class="img-container">
-                            <img src="<%= element.path %>" alt="" class="card-img">
-                        </div>
-                        <div class="card-label">
-                            <a role="button" href="<%= element.href %>" class="btn btn-warning my-auto">Open</a>
-                        </div>
-                    </div>
-
-                <% }); %>
-
-            <% } else { %>   
-                <h3 class="col-lg-4 col-md-6 col-sm-6 col-8 ms-auto custom-top-margin custom-align-right">Stay tuned to our social media for upcoming events</h3>
-                <img src="images/gla_events/no_events.svg" class="col-lg-4 col-md-6 col-sm-6 col-8 me-auto custom-top-margin" alt="">
-            <% } %>
-            <h1 class="custom-top-margin">Previous events</h1>
-            
-            <% prev.forEach(element => { %>
-
-                <div class="card col-lg-3 col-md-4 col-sm-8 p-0">
-                    <div class="img-container">
-                        <img src="<%= element.path %>" alt="" class="card-img">
-                    </div>
-                    <div class="card-label">
-                        <span class="card-bottom-text"><%= element.name %></span>
-                    </div>
+            <form name="" method="post" action="/hunt/start">
+                
+                <div class="mb-3 col-lg-6 mx-auto">
+                    <label for="name" class="form-label">Whatsapp number</label>
+                    <input type="text" class="form-control" id="username" name="username" required maxlength="10" minlength="10">
                 </div>
-
-            <% }); %>
-            
-            <div class="board row">
-                <h1 class="custom-top-margin">Board 20-21</h1>
-                <div class="card col-lg-3 col-md-4 col-sm-8 p-0">
-                    <div class="img-container">
-                        <img src="images/m1.png" alt="" class="card-img">
-                    </div>
-                    <div class="card-label">
-                        <span class="card-bottom-text">Arka Gohil</span>
-                    </div>
+                <div class="mb-3 col-lg-6 mx-auto">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" class="form-control" id="name" name="name" required>
                 </div>
-                <div class="card col-lg-3 col-md-4 col-sm-6 p-0">
-                    <div class="img-container">
-                        <img src="images/m2.png" alt="" class="card-img">
-                    </div>
-                    <div class="card-label">
-                        <span class="card-bottom-text">Preet Shah</span>
-                    </div>
+                
+                <div class="row">
+                <button type="submit" class="btn btn-warning my-4 col-lg-3 col-md-4 col-sm-10 mx-auto">Start game</button>
                 </div>
-                <div class="card col-lg-3 col-md-4 col-sm-6 p-0">
-                    <div class="img-container">
-                        <img src="images/m3.jpg" alt="" class="card-img">
-                    </div>
-                    <div class="card-label">
-                        <span class="card-bottom-text">Awadh Vyas</span>
-                    </div>
-                </div>
-                <div class="card col-lg-3 col-md-4 col-sm-6 p-0">
-                    <div class="img-container">
-                        <img src="images/m4.png" alt="" class="card-img">
-                    </div>
-                    <div class="card-label">
-                        <span class="card-bottom-text">Pruthu Trivedi</span>
-                    </div>
-                </div>
-            </div>
+            </form>
         </div>
+
+       
     </section>
 
     <section id="footer">
