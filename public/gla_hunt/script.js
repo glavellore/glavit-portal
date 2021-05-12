@@ -16,7 +16,7 @@ submitBtn.disabled = true;
 const timer = document.getElementById('timer');
 
 
-let endtime = new Date('05/12/2021 05:06:00 PM').getTime();
+let endtime = new Date('05/13/2021 12:43:00 AM').getTime();
 
 
 
@@ -56,6 +56,23 @@ function stopTimer() {
 function closeAlert(id) {
     document.getElementById(id).style.display = 'none';
 }
+
+function hide_loading(){
+  var elements = document.getElementsByClassName("load_div");
+    if (elements.length > 0) {
+      elements[0].style.zIndex = "-2";
+      // elements[0].style.opacity = "0.8";
+      elements[0].style.transition = "3.5s";
+    }
+}
+function hide_loading2(){
+  var elements = document.getElementsByClassName("load_div");
+    if (elements.length > 0) {
+      elements[0].style.zIndex = "-2";
+      elements[0].style.transition = "1.55s";
+    }
+}
+
 function requestServer() {
         fetch(`/hunt/checkAnswer/${que}/${ans}`)
         .then(result => result.json())

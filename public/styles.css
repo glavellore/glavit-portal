@@ -225,7 +225,10 @@ h1 {
 }
 
 /* treasure hunt ------------------------------------------------------------------------*/
-
+.body-background{
+    background-color: #303841;
+    padding-top: 1px;
+}
 #rightAnsAlert, #wrongAnsAlert, #errorAnsAlert {
     display: none;
 }
@@ -244,4 +247,28 @@ h1 {
 
 .orange {
     color: orange;
+}
+
+/* loader animation------------------------------------------------------------------- */
+.load {
+  position:fixed;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  width: 40vw;
+}
+@media (max-width: 768px){
+    .load
+    {
+      width: 75vw;
+    }
+}
+
+.load_div {
+  background-color: #303841;
+    z-index:10000;
+    position:fixed;
+    top:0;
+    bottom:0;
+    width:100%;
 }

@@ -22,7 +22,9 @@
     <!-- custom stylesheet -->
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body onload="hide_loading()">
+    <div class="load_div"><img class="load" src="images/gla_events/ClueMeIn/loader.gif" alt=""></div>
+    <section class="body-background">
     <section class="top">
         <div class="contain">
             
@@ -97,7 +99,7 @@
               <input type="hidden" class="form-control" id="question" name="question" value="<%= question.number %>">
               <div class="mb-3 col-lg-6 mx-auto">
                   <label for="name" class="form-label">Decode it</label>
-                  <input type="text" class="form-control" id="answerInput" name="answer" required autocomplete="off">
+                  <input type="text" class="form-control" id="answerInput" name="answer" required autocomplete="off" autofocus>
                   <small class="form-text text-muted">To submit, click on check ans first.</small>
               </div>
               
@@ -119,7 +121,7 @@
           <p>© Copyright <span id="Copyright"></span> GLA_VIT</p>
         </div>
     </section>
-
+  </section>
     <script src="script.js"></script>
     <script src="gla_hunt/script.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
