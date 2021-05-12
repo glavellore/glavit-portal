@@ -190,7 +190,14 @@ const checkAnswer = (req, res) => {
 }
 
 const finish = (req, res) => {
-    res.render('treasureHunt/hunt_index', {alert: 'Time up! Stay tuned to our social media for results. Thank You ❤'})
+    Hunt_player.findOneAndUpdate({username: req.user.username}, {submit: true}, (err, docs) => {
+        if(!err) {
+            res.clearCookie("user");
+            res.render('treasureHunt/hunt_index', {alert: 'Your response is recorded! Stay tuned to our social media for results. Thank You ❤'});
+        } else {
+            res.redirect('/hunt');
+        }
+    })
 }
 
 module.exports = {

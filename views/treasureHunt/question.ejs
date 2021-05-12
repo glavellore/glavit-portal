@@ -72,7 +72,10 @@
         <div class="custom-margin">
             <h1 class="custom-h1 mb-4">Clue me in</h1>
             <p class="text-center my-5">Clue <%= question.number %></p>
-            <form name="" method="post" action="/hunt/next">
+
+            <h3 class="timer orange text-center mb-4" id="timer">00:46:00</h3>
+
+            <form id="hunt-form" method="post" action="/hunt/next">
               <div class="row">
                 <div class="alert alert-primary col-lg-6 col-md-8 colo-sm-10 mx-auto" id="rightAnsAlert" role="alert">
                   Voila! your ans is correct. You can go to next clue by clicking on submit.
@@ -90,11 +93,12 @@
                 </div>
               </div>
               
-              <h5 class="mb-3 col-lg-6 mx-auto"><%= question.question %></h5>
+              <h5 class="mb-3 col-lg-6 mx-auto clue-que"><%= question.question %></h5>
               <input type="hidden" class="form-control" id="question" name="question" value="<%= question.number %>">
               <div class="mb-3 col-lg-6 mx-auto">
                   <label for="name" class="form-label">Decode it</label>
                   <input type="text" class="form-control" id="answerInput" name="answer" required autocomplete="off">
+                  <small class="form-text text-muted">To submit, click on check ans first.</small>
               </div>
               
               <div class="row">
