@@ -2,7 +2,7 @@ const Hunt_question = require('../models/hunt/hunt_questionModel');
 
 const isfinished = (req, res, next) => {
     let current = Date.now();
-    let endtime = new Date('05/13/2021 12:43:00 AM');
+    let endtime = new Date('05/14/2021 12:43:00 PM');
 
     if(current < endtime) {
         // if(req.signedCookies.user != undefined) {
@@ -10,8 +10,9 @@ const isfinished = (req, res, next) => {
             
             Hunt_question.findOne({number: req.body.question}, (err, found) => {
                 if(!err && found) {
-
-                    if(found.answer == req.body.answer) {
+                    let processed_ans = req.body.answer.replace(/ /g, "").trim().toLowerCase();
+                    let processed_found = found.answer.replace(/ /g, "").trim().toLowerCase();
+                    if(processed_found == processed_ans) {
                         next();
                     } else {
                         const ques = {

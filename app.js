@@ -4,7 +4,8 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 
 const mainRouter = require('./routes/mainRouter');
-const huntRouter = require('./routes/huntRouter')
+const huntRouter = require('./routes/huntRouter');
+const adminRouter = require('./routes/adminRouter');
 
 //express app
 const app = express();
@@ -38,11 +39,15 @@ app.use('/',express.static(__dirname + "/node_modules/@fortawesome"));
 app.use('/hunt',express.static(__dirname + '/public'));
 app.use('/hunt',express.static(__dirname + "/node_modules/@fortawesome"));
 
+app.use('/admin',express.static(__dirname + '/public'));
+app.use('/admin',express.static(__dirname + "/node_modules/@fortawesome"));
 // app.use(bodyparser.urlencoded({extended:true}));
 
 // main router
-app.use('/', mainRouter);
 app.use('/hunt', huntRouter);
+app.use('/admin', adminRouter);
+app.use('/', mainRouter);
+
 
 const port = process.env.PORT || 3000;
 

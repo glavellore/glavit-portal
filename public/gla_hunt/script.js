@@ -16,7 +16,7 @@ submitBtn.disabled = true;
 const timer = document.getElementById('timer');
 
 
-let endtime = new Date('05/13/2021 12:43:00 AM').getTime();
+let endtime = new Date('05/14/2021 12:43:00 PM').getTime();
 
 
 
@@ -82,16 +82,27 @@ function requestServer() {
         switch(result.cluemein) {
             case 0:
               wrongAnsAlert.style.display = "inline";
+              rightAnsAlert.style.display = "none";
+              errorAnsAlert.style.display = "none";
+              submitBtn.disabled = true;
               break;
             case 1:
               rightAnsAlert.style.display = "inline";
+              wrongAnsAlert.style.display = "none";
+              errorAnsAlert.style.display = "none";
               submitBtn.disabled = false;
               break;
             case -1:
-                wrongAnsAlert.style.display = "inline";
+                errorAnsAlert.style.display = "inline";
+                rightAnsAlert.style.display = "none";
+                wrongAnsAlert.style.display = "none";
+                submitBtn.disabled = true;
               break;
             default:
-                wrongAnsAlert.style.display = "inline";
+                errorAnsAlert.style.display = "inline";
+                rightAnsAlert.style.display = "none";
+                wrongAnsAlert.style.display = "none";
+                submitBtn.disabled = true;
           }
         })
         .catch(err => {

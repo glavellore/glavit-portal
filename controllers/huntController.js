@@ -100,10 +100,10 @@ const nextQue = (req,res) => {
     const upcomingQue = current_que + 1;
 
     const time = new Date().toLocaleString();
-    const last = {
-        number: req.body.question,
-        time: time
-    }
+    // const addToQues = {
+    //     number: req.body.question,
+    //     time: time
+    // }
     const addToQues = {
         number: req.body.question,
         time: time,
@@ -112,7 +112,7 @@ const nextQue = (req,res) => {
     Hunt_player.findOne({username: req.user.username}, (er, found) => {
         if(!er && found) {
             
-            found.lastQue = last;
+            found.lastQue = addToQues;
             found.questions.push(addToQues);
             if(upcomingQue >= 15) {
                 found.submit = true;
@@ -121,7 +121,7 @@ const nextQue = (req,res) => {
                 if(!error) {
 
                     const temp = req.user;
-                    temp.lastQue = last;
+                    temp.lastQue = addToQues;
                     res.cookie("user", temp, { signed:true, maxAge: 2*60*60*1000});
                     
                     if(upcomingQue <= 15) {

@@ -11,6 +11,7 @@ const huntPlayerSchema = new mongoose.Schema({
     }],
     lastQue: {
         number: String,
+        answer: String,
         time: String
     }
 });
