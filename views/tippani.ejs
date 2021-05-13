@@ -22,7 +22,13 @@
     <!-- custom stylesheet -->
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body onload="hide_loading2()">
+  <div class="load_div">
+    <div class="spinner-border text-warning p-4 spin-load" role="status">
+      <div class="sr-only">Loading...</div>
+    </div>
+    </div>
+    <section class="body-background">
     <section class="top">
         <div class="contain">
             
@@ -140,6 +146,7 @@
           <p>© Copyright <span id="Copyright"></span> GLA_VIT</p>
         </div>
     </section>
+  </section>
     <script>
         const scriptURL = 'https://script.google.com/macros/s/AKfycbw5WZcQe6-7IfpsPt6MdzD2QBjuQqenpYTTwxzXsj2tJUaQ84t0bffdpDd8iuLZmMJqIw/exec'
             const form = document.forms['google-sheet']
