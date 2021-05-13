@@ -289,6 +289,17 @@ h1 {
     color: orange;
 }
 
+.description, .event-rules {
+    margin-top: 200px;
+}
+
+.description h5, .event-rules li{
+    color: #e2e3e5;
+    line-height: 2.5rem;
+    font-size: 1.5rem;
+    font-family: 'Raleway', sans-serif;
+}
+
 /* loader animation------------------------------------------------------------------- */
 .load {
   position:fixed;
