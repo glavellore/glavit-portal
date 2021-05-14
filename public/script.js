@@ -17,6 +17,19 @@ function hide_loading2(){
     }
 }
 
+const startgameBtn = document.getElementById('startgame');
+
+let now = Date.now();
+let toStart = new Date('05/11/2021 10:14:00 PM');
+let toEnd = new Date('05/14/2021 12:43:00 PM');
+
+if( now > toStart && now < toEnd) {
+  startgameBtn.disabled = false;
+  startgameBtn.innerText = "Enter event";
+} else {
+  startgameBtn.disabled = true;
+  startgameBtn.innerText = "event ended or not started yet";
+}
 // script to control que visibility from admin side
 
 // setInterval(function(){ 
