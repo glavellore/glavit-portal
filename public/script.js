@@ -20,15 +20,15 @@ function hide_loading2(){
 const startgameBtn = document.getElementById('startgame');
 
 let now = Date.now();
-let toStart = new Date('05/14/2021 06:20:00 PM');
-let toEnd = new Date('05/14/2021 06:25:00 PM');
+let toStart = new Date('05/15/2021 10:20:00 PM');
+let toEnd = new Date('05/15/2021 11:05:00 PM');
 
 if( now > toStart && now < toEnd) {
   startgameBtn.disabled = false;
   startgameBtn.innerText = "Enter event";
 } else {
   startgameBtn.disabled = true;
-  startgameBtn.innerText = "event ended or not started yet";
+  startgameBtn.innerText = "Event ended or not started yet";
 }
 // script to control que visibility from admin side
 

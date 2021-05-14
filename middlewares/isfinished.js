@@ -2,7 +2,7 @@ const Hunt_question = require('../models/hunt/hunt_questionModel');
 
 const isfinished = (req, res, next) => {
     let current = Date.now();
-    let endtime = new Date('05/14/2021 06:25:00 PM');
+    let endtime = new Date('05/15/2021 11:05:00 PM');
 
     if(current < endtime) {
             
