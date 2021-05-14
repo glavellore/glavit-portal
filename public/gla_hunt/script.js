@@ -16,7 +16,7 @@ submitBtn.disabled = true;
 const timer = document.getElementById('timer');
 
 
-let endtime = new Date('05/14/2021 12:43:00 PM').getTime();
+let endtime = new Date('05/14/2021 05:50:00 PM').getTime();
 
 
 
