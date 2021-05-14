@@ -2,7 +2,7 @@ const Hunt_question = require('../models/hunt/hunt_questionModel');
 
 const isfinished = (req, res, next) => {
     let current = Date.now();
-    let endtime = new Date('05/15/2021 12:43:00 PM');
+    let endtime = new Date('05/14/2021 12:43:00 PM');
 
     if(current < endtime) {
         // if(req.signedCookies.user != undefined) {
