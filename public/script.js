@@ -20,8 +20,8 @@ function hide_loading2(){
 const startgameBtn = document.getElementById('startgame');
 
 let now = Date.now();
-let toStart = new Date('05/15/2021 10:20:00 PM');
-let toEnd = new Date('05/15/2021 11:05:00 PM');
+let toStart = new Date('05/14/2021 07:30:00 PM');
+let toEnd = new Date('05/14/2021 07:35:00 PM');
 
 if( now > toStart && now < toEnd) {
   startgameBtn.disabled = false;
