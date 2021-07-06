@@ -9,8 +9,8 @@ ansInput.addEventListener('keyup', function() {
 const startgameBtn = document.getElementById('startgame');
 
 let now = Date.now();
-let toStart = new Date('05/06/2021 10:20:00 PM');
-let toEnd = new Date('05/07/2021 11:05:00 PM');
+let toStart = new Date('07/06/2021 10:20:00 PM');
+let toEnd = new Date('07/07/2021 11:05:00 PM');
 
 if( now > toStart && now < toEnd) {
   startgameBtn.disabled = false;
@@ -30,7 +30,7 @@ submitBtn.disabled = true;
 const timer = document.getElementById('timer');
 
 
-let endtime = new Date('05/15/2021 11:05:00 PM').getTime();
+let endtime = new Date('07/07/2021 11:05:00 PM').getTime();
 
 
 
@@ -57,7 +57,7 @@ function Timer(){
 
     ansInput.value = 'not answered';
   
-    let tosSubmit = document.getElementById('hunt-form');
+    let tosSubmit = document.getElementById('trivia-form');
     tosSubmit.submit();
 
   }
@@ -73,12 +73,12 @@ function closeAlert(id) {
 
 
 function requestServer() {
-        fetch(`/hunt/checkAnswer/${que}/${ans}`)
+        fetch(`/trivia/checkAnswer/${que}/${ans}`)
         .then(result => result.json())
         .then(result => {
-        // console.log(result.cluemein);
+        // console.log(result.trivia);
 
-        switch(result.cluemein) {
+        switch(result.trivia) {
             case 0:
               wrongAnsAlert.style.display = "inline";
               rightAnsAlert.style.display = "none";

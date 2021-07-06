@@ -17,19 +17,19 @@ function hide_loading2(){
     }
 }
 
-const startgameBtn = document.getElementById('startgame');
+// const startgameBtn = document.getElementById('startgame');
 
-let now = Date.now();
-let toStart = new Date('05/15/2021 10:20:00 PM');
-let toEnd = new Date('05/15/2021 11:05:00 PM');
+// let now = Date.now();
+// let toStart = new Date('07/06/2021 10:20:00 PM');
+// let toEnd = new Date('07/07/2021 11:05:00 PM');
 
-if( now > toStart && now < toEnd) {
-  startgameBtn.disabled = false;
-  startgameBtn.innerText = "Enter event";
-} else {
-  startgameBtn.disabled = true;
-  startgameBtn.innerText = "Event ended or not started yet";
-}
+// if( now > toStart && now < toEnd) {
+//   startgameBtn.disabled = false;
+//   startgameBtn.innerText = "Enter event";
+// } else {
+//   startgameBtn.disabled = true;
+//   startgameBtn.innerText = "Event ended or not started yet";
+// }
 // script to control que visibility from admin side
 
 // setInterval(function(){ 
