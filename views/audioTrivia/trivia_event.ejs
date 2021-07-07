@@ -18,17 +18,13 @@
     <!-- google fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;500;700&family=Montserrat:wght@400;500;700&family=Mukta+Vaani:wght@400;600;700;800&family=Raleway:wght@400;600;700;900&family=Shrikhand&display=swap" rel="stylesheet">
-       
+        
     <!-- custom stylesheet -->
     <link rel="stylesheet" href="styles.css">
 </head>
-<body onload="hide_loading2()">
-  <div class="load_div">
-    <div class="spinner-border text-warning p-4 spin-load" role="status">
-      <div class="sr-only">Loading...</div>
-    </div>
-  </div>
-  <section class="body-background">
+<body onload="hide_loading()">
+    <div class="load_div"><img class="load" src="images/gla_events/audioTrivia/loader.gif" alt=""></div>
+    <section class="body-background">
     <section class="top">
         <div class="contain">
             
@@ -77,43 +73,57 @@
 
         <div class="custom-margin">
             <h1 class="custom-h1 mb-4">Audio Trivia</h1>
-            <% if(alert.length > 0){ %>
+            
 
-                <div class="alert alert-primary alert-dismissible fade show col-lg-6 col-md-8 colo-sm-10 mx-auto" role="alert">
-                    <%= alert %>
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
+            <h3 class="timer orange text-center mb-4" id="timer">01:01:00</h3>
+
+            <% rounds.forEach(round => { %>
               
+              <% if(rounds.indexOf(round) == 0) { %>
+                <br>
+                <h2 class="text-center mt-4">Round 1</h2>
               <% } %>
-            <form name="" method="post" action="/trivia/start">
+
+              <% if(rounds.indexOf(round) == 1) { %>
+                <br>
+                <h2 class="text-center mt-4">Round 2</h2>
+              <% } %>
+
+              <% if(rounds.indexOf(round) == 2) { %>
+                <br>
+                <h2 class="text-center mt-4">Round 3</h2>
+              <% } %>
+
+              <% round.forEach(element => { %>
                 
-                <div class="row">
-                  <button type="submit" class="btn btn-warning my-4 col-lg-3 col-md-4 col-sm-10 mx-auto" id="startgame">Enter event</button>
-                </div>
+                <div class="card">
+                    <div class="card-body">
+    
+                        <p class="text-center my-5">Audio <%= element.number %></p>
+                        <h5 class="mb-3 col-lg-6 mx-auto clue-que"><%= element.question %></h5>
+                        
+                        <audio controls controlsList="nodownload">
+                            <source src="audio_trivia/audio/a<%= element.number %>.mp3" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
+    
+                        <div class="mb-3 col-lg-6 mx-auto">
+                            <label for="name" class="form-label orange">Guess the answer</label>
+                            <input type="text" class="form-control" id="answerInput" name="answer<%= element.number %>" autocomplete="off">
+                        </div>
+                    
+                        
+                    </div>
+                </div>    
+                <% }); %>
+              <% }); %>
 
-            </form>
+              <div class="row">
+                <button id="submitBtn" type="submit" class="btn btn-warning my-4 col-lg-3 col-md-4 col-sm-10 mx-auto">Submit</button>
+              </div>
 
-            <div class="description">
-              <h1 class="text-center my-4">Quick description</h1>
-              <h5>Continuing our theme of learning with games, we present an online treasure hunt full of highly intellectual questions, from various genres. 
-                The answer of the previous question opens the door to the next. The final answer is the key to win the game. 
-                The mind boggling riddles will make this game an engaging activity.</h5>
-            </div>
+            
 
-            <div class="event-rules">
-              <h1 class="text-center my-4">Rules and instructions</h1>
-              <ul>
-                <li>The event time is 10:20 PM to 11:05 PM, 15 MAY 2021. You can start filling details at 10:20 PM.</li>
-                <li>Enter your Whatsapp number and Full name to start event✨. These details will be reflected in responses.</li>
-                <li>After submitting, first clue🧩 will be shown to you.</li>
-                <li>You need to type your answer and then click on 'Check Ans'. If your ans is correct✅ 'Submit' button will be enabled. After submitting you will be redirected to next question.</li>
-                <li>Answer should be in 'English' language only❕. And it is of one or two words. </li>
-                <li>There are total 15 questions in this hunt. You will be given total 45 mins🕒 to solve them.</li>
-                <li>Timer will be shown above clues. If timer reaches 00:00, your response will be submitted automatically. But the last answer will not❌ be saved even if it correct.</li>
-                <li>If you close the browser by mistake, don't worry✌. Again enter the event, by filling your details. It will continue from the last question where you left. (But not the timer❌. As you know, "Time and Tide Wait for None" 😛)</li>
-                <li>Enjoy the event. Best of luck👍</li>
-              </ul>
-            </div>
         </div>
 
        
