@@ -22,8 +22,12 @@
     <!-- custom stylesheet -->
     <link rel="stylesheet" href="styles.css">
 </head>
-<body onload="hide_loading()">
-    <div class="load_div"><img class="load" src="images/gla_events/audioTrivia/loader.gif" alt=""></div>
+<body onload="hide_loading2()">
+  <div class="load_div">
+    <div class="spinner-border text-warning p-4 spin-load" role="status">
+      <div class="sr-only">Loading...</div>
+    </div>
+  </div>
     <section class="body-background">
     <section class="top">
         <div class="contain">
@@ -75,8 +79,19 @@
             <h1 class="custom-h1 mb-4">Audio Trivia</h1>
             
 
-            <h3 class="timer orange text-center mb-4" id="timer">01:01:00</h3>
+            <h3 class="timer orange text-center mb-4 py-2 sticky-top" id="timer">01:01:00</h3>
 
+            <form action="/trivia/submit" method="post" id="trivia-form">
+
+            <div class="mb-3 col-lg-6 mx-auto">
+              <label for="name" class="form-label orange">Name</label>
+              <input type="text" class="form-control" id="name" name="name" autocomplete="off">
+            </div>
+
+            <div class="mb-3 col-lg-6 mx-auto">
+              <label for="username" class="form-label orange">Whatsapp Number</label>
+              <input type="text" class="form-control" id="username" name="username" maxlength="10" minlength="10" autocomplete="off">
+            </div>
             <% rounds.forEach(round => { %>
               
               <% if(rounds.indexOf(round) == 0) { %>
@@ -101,15 +116,17 @@
     
                         <p class="text-center my-5">Audio <%= element.number %></p>
                         <h5 class="mb-3 col-lg-6 mx-auto clue-que"><%= element.question %></h5>
-                        
-                        <audio controls controlsList="nodownload">
-                            <source src="audio_trivia/audio/a<%= element.number %>.mp3" type="audio/mpeg">
-                            Your browser does not support the audio element.
-                        </audio>
-    
+
+                        <div class="audio-container mb-3 col-lg-6 mx-auto">
+                          <audio controls controlsList="nodownload">
+                              <source src="audio_trivia/audio/a<%= element.number %>.mp3" type="audio/mpeg">
+                              Your browser does not support the audio element.
+                          </audio>
+                        </div>
+
                         <div class="mb-3 col-lg-6 mx-auto">
-                            <label for="name" class="form-label orange">Guess the answer</label>
-                            <input type="text" class="form-control" id="answerInput" name="answer<%= element.number %>" autocomplete="off">
+                            <label for="answer<%= element.number %>" class="form-label orange">Guess the answer</label>
+                            <input type="text" class="form-control" id="answer<%= element.number %>" name="answer<%= element.number %>" autocomplete="off">
                         </div>
                     
                         
@@ -119,10 +136,10 @@
               <% }); %>
 
               <div class="row">
-                <button id="submitBtn" type="submit" class="btn btn-warning my-4 col-lg-3 col-md-4 col-sm-10 mx-auto">Submit</button>
+                <button id="submitBtn" type="submit" class="btn btn-warning my-4 col-lg-3 col-md-4 col-sm-10 mx-auto mt-5">Submit</button>
               </div>
 
-            
+            </form>
 
         </div>
 

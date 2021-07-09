@@ -1,43 +1,26 @@
-var que = document.getElementById('question').value;
+// var que = document.getElementById('question').value;
 
-var ansInput = document.getElementById('answerInput');
-var ans;
-ansInput.addEventListener('keyup', function() {
-    ans = ansInput.value;
-});
+// var ansInput = document.getElementById('answerInput');
+// var ans;
+// ansInput.addEventListener('keyup', function() {
+//     ans = ansInput.value;
+// });
 
-const startgameBtn = document.getElementById('startgame');
+// const submitBtn = document.getElementById('submitBtn');
+// const rightAnsAlert = document.getElementById('rightAnsAlert');
+// const wrongAnsAlert = document.getElementById('wrongAnsAlert');
+// const errorAnsAlert = document.getElementById('errorAnsAlert');
 
-let now = Date.now();
-let toStart = new Date('07/06/2021 10:20:00 PM');
-let toEnd = new Date('07/07/2021 11:05:00 PM');
-
-if( now > toStart && now < toEnd) {
-  startgameBtn.disabled = false;
-  startgameBtn.innerText = "Enter event";
-} else {
-  startgameBtn.disabled = true;
-  startgameBtn.innerText = "Event ended or not started yet";
-}
-
-const submitBtn = document.getElementById('submitBtn');
-const rightAnsAlert = document.getElementById('rightAnsAlert');
-const wrongAnsAlert = document.getElementById('wrongAnsAlert');
-const errorAnsAlert = document.getElementById('errorAnsAlert');
-
-submitBtn.disabled = true;
+// submitBtn.disabled = true;
 
 const timer = document.getElementById('timer');
 
-
-let endtime = new Date('07/07/2021 11:05:00 PM').getTime();
-
-
+let endtime = new Date('07/08/2021 09:15:00 PM').getTime();
 
 // let day = Math.floor(diff / (1000*60*60*24));
 
 var trivia_timer = setInterval(Timer, 1000);
-
+var trivia_timer_display = setInterval(displayTimer, 4000);
 
 
 function Timer(){ 
@@ -54,11 +37,9 @@ function Timer(){
   if(hour <= 0 && min <= 0 && sec <= 0) {
     stopTimer();
     timer.innerText = "00:00:00";
-
-    ansInput.value = 'not answered';
   
-    let tosSubmit = document.getElementById('trivia-form');
-    tosSubmit.submit();
+    let toSubmit = document.getElementById('trivia-form');
+    toSubmit.submit();
 
   }
 }
@@ -71,43 +52,47 @@ function closeAlert(id) {
     document.getElementById(id).style.display = 'none';
 }
 
-
-function requestServer() {
-        fetch(`/trivia/checkAnswer/${que}/${ans}`)
-        .then(result => result.json())
-        .then(result => {
-        // console.log(result.trivia);
-
-        switch(result.trivia) {
-            case 0:
-              wrongAnsAlert.style.display = "inline";
-              rightAnsAlert.style.display = "none";
-              errorAnsAlert.style.display = "none";
-              submitBtn.disabled = true;
-              break;
-            case 1:
-              rightAnsAlert.style.display = "inline";
-              wrongAnsAlert.style.display = "none";
-              errorAnsAlert.style.display = "none";
-              submitBtn.disabled = false;
-              break;
-            case -1:
-                errorAnsAlert.style.display = "inline";
-                rightAnsAlert.style.display = "none";
-                wrongAnsAlert.style.display = "none";
-                submitBtn.disabled = true;
-              break;
-            default:
-                errorAnsAlert.style.display = "inline";
-                rightAnsAlert.style.display = "none";
-                wrongAnsAlert.style.display = "none";
-                submitBtn.disabled = true;
-          }
-        })
-        .catch(err => {
-            console.log(err);
-        })
-
+function displayTimer() {
+  timer.style.opacity = "1";
 }
+
+
+// function requestServer() {
+//         fetch(`/trivia/checkAnswer/${que}/${ans}`)
+//         .then(result => result.json())
+//         .then(result => {
+//         // console.log(result.trivia);
+
+//         switch(result.trivia) {
+//             case 0:
+//               wrongAnsAlert.style.display = "inline";
+//               rightAnsAlert.style.display = "none";
+//               errorAnsAlert.style.display = "none";
+//               submitBtn.disabled = true;
+//               break;
+//             case 1:
+//               rightAnsAlert.style.display = "inline";
+//               wrongAnsAlert.style.display = "none";
+//               errorAnsAlert.style.display = "none";
+//               submitBtn.disabled = false;
+//               break;
+//             case -1:
+//                 errorAnsAlert.style.display = "inline";
+//                 rightAnsAlert.style.display = "none";
+//                 wrongAnsAlert.style.display = "none";
+//                 submitBtn.disabled = true;
+//               break;
+//             default:
+//                 errorAnsAlert.style.display = "inline";
+//                 rightAnsAlert.style.display = "none";
+//                 wrongAnsAlert.style.display = "none";
+//                 submitBtn.disabled = true;
+//           }
+//         })
+//         .catch(err => {
+//             console.log(err);
+//         })
+
+// }
 
 

@@ -3,7 +3,6 @@ const mongoose = require('mongoose');
 const triviaResponseSchema = new mongoose.Schema({
     name: String,
     username: String,
-    submit: Boolean,
     questions: [{
         number: String,
         answer: String

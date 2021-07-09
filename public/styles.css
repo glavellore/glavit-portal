@@ -121,7 +121,8 @@ h1 {
 .top-upper-layer {
     height: 50%;
     width: 100%;
-    background-color: rgb(128, 128, 128, 0.5);
+    /* background-color: rgb(128, 128, 128, 0.5); */
+    background-color: rgb(180, 180, 180, 0.5);
     position: absolute;
     top: 60%;
     backdrop-filter: blur(3px);
@@ -298,6 +299,61 @@ h1 {
     line-height: 2.5rem;
     font-size: 1.5rem;
     font-family: 'Raleway', sans-serif;
+}
+
+
+/* audio trivia -----------------------------------------------------------------------*/
+
+audio {
+    max-width: 100%;
+}
+
+.sticky-top {
+    background-color: #303841;
+    opacity: 0;
+}
+
+#trivia-main {
+    /* background: url('images/gla_events/audioTrivia/bg.jpg'); */
+    background: transparent;
+    background-size: cover;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.trivia-body {
+    background: url('images/gla_events/audioTrivia/bg.jpg');
+    background-size: cover;
+}
+
+.trivia-particles{
+    background: transparent;
+}
+
+.float{
+	position:fixed;
+	width:60px;
+	height:60px;
+	bottom:40px;
+	right:40px;
+	background-color:orange;
+	color: #e2e3e5;
+	border-radius:50px;
+	text-align:center;
+	box-shadow: 2px 2px 3px #303841;
+}
+
+.my-float{
+	margin-top:18px;
+    margin-right: 10px;
+}
+
+.float:hover{
+	color: #303841;
+    cursor: pointer;
+}
+.bg-music {
+    display: none;
 }
 
 /* loader animation------------------------------------------------------------------- */

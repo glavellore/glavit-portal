@@ -18,12 +18,16 @@
     <!-- google fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;500;700&family=Montserrat:wght@400;500;700&family=Mukta+Vaani:wght@400;600;700;800&family=Raleway:wght@400;600;700;900&family=Shrikhand&display=swap" rel="stylesheet">
-        
+       
     <!-- custom stylesheet -->
     <link rel="stylesheet" href="styles.css">
 </head>
-<body onload="hide_loading()">
-    <div class="load_div"><img class="load" src="images/gla_events/audioTrivia/loader.gif" alt=""></div>
+<body onload="hide_loading2()">
+  <div class="load_div">
+    <div class="spinner-border text-warning p-4 spin-load" role="status">
+      <div class="sr-only">Loading...</div>
+    </div>
+    </div>
     <section class="body-background">
     <section class="top">
         <div class="contain">
@@ -36,6 +40,9 @@
                   </button>
                   <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto justify-content-end">
+                      <li class="nav-item">
+                        <a class="nav-link" href="/admin">Logout</a>
+                      </li>
                       <li class="nav-item">
                         <a class="nav-link" href="https://www.instagram.com/gla_vit/"><i class="fab fa-instagram"></i></a>
                       </li>
@@ -72,53 +79,79 @@
     <section class="main">
 
         <div class="custom-margin">
-            <h1 class="custom-h1 mb-4">Audio Trivia</h1>
-            <p class="text-center my-5">Audio <%= question.number %></p>
-
-            <h3 class="timer orange text-center mb-4" id="timer">01:01:00</h3>
-
-            <form id="trivia-form" method="post" action="/trivia/next">
-              <div class="row">
-                <div class="alert alert-primary col-lg-6 col-md-8 colo-sm-10 mx-auto" id="rightAnsAlert" role="alert">
-                  Great! you guessed it correct. You can go to next audio by clicking on submit.
-                  <button type="button" class="btn-close" onclick="closeAlert('rightAnsAlert')"></button>
-                </div>
-              
-                <div class="alert alert-warning col-lg-6 col-md-8 colo-sm-10 mx-auto" id="wrongAnsAlert" role="alert">
-                  Wrong! Try again, you can do it
-                  <button type="button" class="btn-close" onclick="closeAlert('wrongAnsAlert')"></button>
-                </div>
-
-                <div class="alert alert-warning col-lg-6 col-md-8 colo-sm-10 mx-auto" id="errorAnsAlert" role="alert">
-                  Retry with same answer, some error occured.
-                  <button type="button" class="btn-close" onclick="closeAlert('errorAnsAlert')"></button>
-                </div>
-              </div>
-              
-              <h5 class="mb-3 col-lg-6 mx-auto clue-que"><%= question.question %></h5>
-              <input type="hidden" class="form-control" id="question" name="question" value="<%= question.number %>">
-
-              <audio controls controlsList="nodownload">
-                <source src="audio_trivia/audio/a<%= question.number %>.mp3" type="audio/mpeg">
-              Your browser does not support the audio element.
-              </audio>
-
-              <div class="mb-3 col-lg-6 mx-auto">
-                  <label for="name" class="form-label">Guess the answer</label>
-                  <input type="text" class="form-control" id="answerInput" name="answer" required autocomplete="off" autofocus>
-                  <small class="form-text text-muted">To submit, click on check ans first.</small>
-              </div>
-              
-              <div class="row">
-              <button id="submitBtn" type="submit" class="btn btn-warning my-4 col-lg-3 col-md-4 col-sm-10 mx-auto">Submit</button>
-              </div>
-            </form>
+            <h1 class="mb-4 custom-h1 text-center">Audio Trivia</h1>
+            <h1 class="text-center mb-5">Results</h1>
             
-            <div class="row">
-              <button type="button" class="btn btn-light my-4 col-lg-3 col-md-4 col-sm-10 mx-auto" onclick="requestServer()">Check Ans</button>
-            </div>
-        </div>
+            <div class="container-fluid row">
+              <% if(results.length === 0) { %>
+                <img class="col-lg-4 col-md-6 col-sm-6 mx-auto" src="images/no_result.svg" alt="">
+                <h3 class="text-center mt-4 orange">No results found</h3>
+              <% } else {%>
 
+              <div class="result-container">
+              <div class="result-table">
+              <table class="table table-secondary m-auto" id="trivia-result">
+                <thead>
+                  <tr>
+                    <th scope="col">Username</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Timestamp</th>
+                    <th scope="col">Ans 1</th>
+                    <th scope="col">Ans 2</th>
+                    <th scope="col">Ans 3</th>
+                    <th scope="col">Ans 4</th>
+                    <th scope="col">Ans 5</th>
+                    <th scope="col">Ans 6</th>
+                    <th scope="col">Ans 7</th>
+                    <th scope="col">Ans 8</th>
+                    <th scope="col">Ans 9</th>
+                    <th scope="col">Ans 10</th>
+                    <th scope="col">Ans 11</th>
+                    <th scope="col">Ans 12</th>
+                    <th scope="col">Ans 13</th>
+                    <th scope="col">Ans 14</th>
+                    <th scope="col">Ans 15</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    
+                    <!-- real ans -->
+                    <tr>
+                        <td scope="row">Answers</td>
+                        <td></td>
+                        <td></td>
+                        <% answers.forEach(ans => { %>
+                            <td><%= ans.answer %></td>
+                        <% }); %>
+                    </tr>
+
+                    <!-- responses -->
+
+                  <% results.forEach(element => { %>
+
+                      <tr>
+                        <td scope="row"><%= element.username %></td>
+                        <td><%= element.name %></td>
+                        <td><%= element.time %></td>
+                        <% element.questions.forEach(ques => { %>
+                            <td><%= ques.answer %></td>
+                        <% }); %>
+                      </tr>
+                        
+                  <% }); %>
+                  
+                </tbody>
+              </table>
+            </div>
+
+            </div>
+            <% } %>
+            </div>
+
+            <div class="row">
+                <button type="button" class="btn btn-warning my-4 col-lg-3 col-md-4 col-sm-10 mx-auto" onclick="convertToExcel()">Download excel</button>
+              </div>
+        </div>
        
     </section>
 
@@ -127,10 +160,22 @@
           <p>© Copyright <span id="Copyright"></span> GLA_VIT</p>
         </div>
     </section>
-  </section>
+    </section>
     <script src="script.js"></script>
-    <script src="audio_trivia/script.js"></script>
+    
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+    <script src="//cdn.rawgit.com/rainabba/jquery-table2excel/1.1.0/dist/jquery.table2excel.min.js"></script>
+    <script>
+
+        function convertToExcel() {
+            $("#trivia-result").table2excel({
+                exclude: ".noExport",
+                filename: "trivia_result.xls",
+                fileext: ".xls"
+            });
+        }
+
+    </script>
 </body>
 </html>

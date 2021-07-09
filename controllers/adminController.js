@@ -1,5 +1,7 @@
 const Event = require("../models/eventModel");
 const Hunt_player = require("../models/hunt/hunt_playerModel");
+const Trivia_response = require("../models/trivia/trivia_responseModel");
+const Trivia_question = require("../models/trivia/trivia_questionModel");
 
 var alert = '';
 
@@ -85,6 +87,38 @@ const huntResult = (req, res) => {
     
 }
 
+const triviaResult = (req, res) => {
+
+    var answers;
+    var sortedAnswers;
+    Trivia_question.find({}, (err, found) => {
+        if(!err){
+            answers = found;
+            sortedAnswers = answers.sort((a, b) => parseFloat(a.number) - parseFloat(b.number));
+
+        } else {
+            console.log(err);
+            res.redirect('admin/home');
+        }
+    })
+
+    Trivia_response.find({}, (err, found) => {
+        if(!err) {
+            var result = found;
+            var sortAccToTime = found.sort((a, b) => (new Date(a.time)) - (new Date(b.time)));
+            // sortAccToTime.forEach(element => {
+            //     console.log(element);
+            // });
+            res.render('admin/result/trivia_result.ejs', {results: sortAccToTime, answers: sortedAnswers});
+            // res.send("hey")
+        } else {
+            console.log(err);
+            res.redirect('admin/home');
+        }
+    })
+    
+}
+
 module.exports = {
-    index, login, home, huntResult
+    index, login, home, huntResult, triviaResult
 }
