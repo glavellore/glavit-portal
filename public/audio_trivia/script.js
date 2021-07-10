@@ -15,7 +15,7 @@
 
 const timer = document.getElementById('timer');
 
-let endtime = new Date('07/10/2021 05:35:00 PM').getTime();
+let endtime = new Date('07/10/2021 11:15:00 PM').getTime();
 
 // let day = Math.floor(diff / (1000*60*60*24));
 
