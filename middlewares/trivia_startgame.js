@@ -9,7 +9,7 @@ const startgame = (req, res, next) => {
         next();
     } else {
         // console.log("no");
-        res.render('audioTrivia/trivia_index', {alert: 'Game time is 10 July 10:05 to 11:05 pm'})
+        res.render('audioTrivia/trivia_index', {alert: 'Game time is 10 July 10:15 to 11:15 pm'})
     }
 }
 
