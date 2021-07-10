@@ -1,7 +1,7 @@
 const startgameBtn = document.getElementById('startgame');
 
 let now = Date.now();
-let toStart = new Date('07/09/2021 03:12:00 PM');
+let toStart = new Date('07/10/2021 10:15:00 PM');
 let toEnd = new Date('07/10/2021 11:14:58 PM');
 
 if( now > toStart && now < toEnd) {
