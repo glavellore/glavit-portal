@@ -14,6 +14,7 @@ const start = (req, res) => {
     let round1 = [];
     let round2 = [];
     let round3 = [];
+    let round4 = [];
 
     Trivia_question.find({}, (err, found) => {
 
@@ -32,12 +33,16 @@ const start = (req, res) => {
                         round3.push(element);
                         break;
 
+                    case "4":
+                        round4.push(element);
+                        break;
+
                     default:
                         break;
                 }
             });
 
-            res.render('audioTrivia/trivia_event', {rounds: [round1, round2, round3]});
+            res.render('audioTrivia/trivia_event', {rounds: [round1, round2, round3, round4]});
 
         } else {
             console.log(err);
@@ -115,6 +120,34 @@ const submit = (req, res) => {
         {
             number: "15",
             answer: req.body.answer15
+        },
+        {
+            number: "16",
+            answer: req.body.answer16
+        },
+        {
+            number: "17",
+            answer: req.body.answer17
+        },
+        {
+            number: "18",
+            answer: req.body.answer18
+        },
+        {
+            number: "19",
+            answer: req.body.answer19
+        },
+        {
+            number: "20",
+            answer: req.body.answer20
+        },
+        {
+            number: "21",
+            answer: req.body.answer21
+        },
+        {
+            number: "22",
+            answer: req.body.answer22
         }
         ],
         time: time

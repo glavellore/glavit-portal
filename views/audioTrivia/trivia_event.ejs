@@ -92,21 +92,31 @@
               <label for="username" class="form-label orange">Whatsapp Number</label>
               <input type="text" class="form-control" id="username" name="username" maxlength="10" minlength="10" autocomplete="off">
             </div>
+            <br><br><h3 class="text-center mt-4">Feel free to use Google. Best of luck 👍</h3><br><br>
             <% rounds.forEach(round => { %>
               
               <% if(rounds.indexOf(round) == 0) { %>
                 <br>
-                <h2 class="text-center mt-4">Round 1</h2>
+                <h2 class="text-center mt-4">Round 1 - Character Voices</h2>
+                <h5 class="mb-3 col-lg-6 mx-auto clue-que orange">Famous Fictional Characters From TV & Movies. Simply Name The Character NOT The Actor/Actress.</h5>
               <% } %>
 
               <% if(rounds.indexOf(round) == 1) { %>
                 <br>
-                <h2 class="text-center mt-4">Round 2</h2>
+                <h2 class="text-center mt-4">Round 2 - Guess The Voice</h2>
+                <h5 class="mb-3 col-lg-6 mx-auto clue-que orange">Short Clips Of Famous People Talking, Simply Name The Person Thats Speaking.</h5>
               <% } %>
 
               <% if(rounds.indexOf(round) == 2) { %>
                 <br>
-                <h2 class="text-center mt-4">Round 3</h2>
+                <h2 class="text-center mt-4">Round 3 - Songs</h2>
+                <h5 class="mb-3 col-lg-6 mx-auto clue-que orange">Questions based on Gujarati Songs/folk music.</h5>
+              <% } %>
+
+              <% if(rounds.indexOf(round) == 3) { %>
+                <br>
+                <h2 class="text-center mt-4">Round 4 - Backwards Brainbusters</h2>
+                <h5 class="mb-3 col-lg-6 mx-auto clue-que orange">Short Clips Of Famous Bollywood Songs, the challenge Is They Are Played Backwards.</h5>
               <% } %>
 
               <% round.forEach(element => { %>
