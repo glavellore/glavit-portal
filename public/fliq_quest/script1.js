@@ -1,8 +1,8 @@
 const startgameBtn = document.getElementById('startgame');
 
 let now = Date.now();
-let toStart = new Date('08/15/2021 10:05:00 PM');
-let toEnd = new Date('08/15/2021 11:00:00 PM');
+let toStart = new Date('08/15/2021 03:10:00 PM');
+let toEnd = new Date('08/15/2021 03:18:00 PM');
 
 if( now > toStart && now < toEnd) {
   startgameBtn.disabled = false;

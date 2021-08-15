@@ -30,7 +30,7 @@ submitBtn.disabled = true;
 const timer = document.getElementById('timer');
 
 
-let endtime = new Date('08/14/2021 11:00:00 PM').getTime();
+let endtime = new Date('08/15/2021 03:18:00 PM').getTime();
 
 
 
