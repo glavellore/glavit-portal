@@ -6,6 +6,7 @@ const cookieParser = require('cookie-parser');
 const mainRouter = require('./routes/mainRouter');
 const huntRouter = require('./routes/huntRouter');
 const triviaRouter = require('./routes/triviaRouter');
+const fliqRouter = require('./routes/fliqRouter');
 const adminRouter = require('./routes/adminRouter');
 
 //express app
@@ -43,6 +44,9 @@ app.use('/hunt',express.static(__dirname + "/node_modules/@fortawesome"));
 app.use('/trivia',express.static(__dirname + '/public'));
 app.use('/trivia',express.static(__dirname + "/node_modules/@fortawesome"));
 
+app.use('/fliq',express.static(__dirname + '/public'));
+app.use('/fliq',express.static(__dirname + "/node_modules/@fortawesome"));
+
 app.use('/admin',express.static(__dirname + '/public'));
 app.use('/admin',express.static(__dirname + "/node_modules/@fortawesome"));
 // app.use(bodyparser.urlencoded({extended:true}));
@@ -50,6 +54,7 @@ app.use('/admin',express.static(__dirname + "/node_modules/@fortawesome"));
 // main router
 app.use('/hunt', huntRouter);
 app.use('/trivia', triviaRouter);
+app.use('/fliq', fliqRouter);
 app.use('/admin', adminRouter);
 app.use('/', mainRouter);
 
