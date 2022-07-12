@@ -1,5 +1,6 @@
 const Event = require("../models/eventModel");
 const Hunt_player = require("../models/hunt/hunt_playerModel");
+const Capture_player = require("../models/capture/capture_playerModel");
 const Trivia_response = require("../models/trivia/trivia_responseModel");
 const Trivia_question = require("../models/trivia/trivia_questionModel");
 const Fliq_player = require("../models/fliq_quest/fliq_playerModel");
@@ -81,6 +82,64 @@ const huntResult = (req, res) => {
             });
         
             res.render('admin/result/hunt_result.ejs', {results: sortAccToNumber});
+        } else {
+            res.redirect('admin/home');
+        }
+    })
+    
+}
+
+
+const captureResult = (req, res) => {
+    let last_que_list = [];
+    let ans_list = [];
+    let que_num = [];
+
+    Capture_player.find({}, (err, found) => {
+        if(!err && found) {
+            found.forEach(element => {
+                const newAns = {
+                    number: element.lastQue.number,
+                    time: Math.ceil((new Date(element.lastQue.time) - new Date(element.start)) / (1000 * 60)),
+                    start: element.start,
+                    end: element.lastQue.time,
+                    name: element.name,
+                    username: element.username,
+                    answer: element.lastQue.answer
+                }
+                last_que_list.push(newAns);
+                que_num.push(newAns.number);
+                
+            });
+
+            const unique_que_num = [...new Set(que_num)];
+            
+            unique_que_num.forEach(num => {
+                
+                let toAdd = {
+                    number: num,
+                    answers: []
+                }
+
+                last_que_list.forEach(element => {
+                    if(element.number == num) {
+                        toAdd.answers.push(element);
+                    }
+                });
+
+                ans_list.push(toAdd);
+
+            });
+            
+            
+            const sortAccToNumber = ans_list.sort((a, b) => parseFloat(b.number) - parseFloat(a.number));
+
+            sortAccToNumber.forEach(element => {
+                // element.answers = element.answers.sort((a, b) => (new Date(a.time)) - (new Date(b.time)));
+                element.answers = element.answers.sort((a, b) => ((a.time)) - ((b.time)));
+            });
+        
+            res.render('admin/result/capture_result.ejs', {results: sortAccToNumber});
         } else {
             res.redirect('admin/home');
         }
@@ -175,5 +234,5 @@ const triviaResult = (req, res) => {
 }
 
 module.exports = {
-    index, login, home, huntResult, triviaResult, fliqResult
+    index, login, home, huntResult, triviaResult, fliqResult, captureResult
 }
