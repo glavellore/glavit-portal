@@ -2,7 +2,7 @@ const Capture_question = require('../models/capture/capture_questionModel');
 
 const isfinished = (req, res, next) => {
     let current = Date.now();
-    let endtime = new Date('07/12/2022 06:55:00 PM');
+    let endtime = new Date(process.env.END);
 
     if(current < endtime) {
             

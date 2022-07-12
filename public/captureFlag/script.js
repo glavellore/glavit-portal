@@ -9,8 +9,8 @@ ansInput.addEventListener('keyup', function() {
 const startgameBtn = document.getElementById('startgame');
 
 let now = Date.now();
-let toStart = new Date('07/12/2022 05:15:00 PM');
-let toEnd = new Date('07/12/2022 06:55:00 PM');
+let toStart = new Date(process.env.START);
+let toEnd = new Date(process.env.END);
 
 if( now > toStart && now < toEnd) {
   startgameBtn.disabled = false;
@@ -30,7 +30,7 @@ submitBtn.disabled = true;
 const timer = document.getElementById('timer');
 
 
-let endtime = new Date('05/15/2021 11:05:00 PM').getTime();
+let endtime = new Date(process.env.END).getTime();
 
 
 
