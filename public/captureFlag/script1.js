@@ -10,7 +10,7 @@ const startgameBtn = document.getElementById('startgame');
 
 let now = Date.now();
 let toStart = new Date('07/12/2022 06:00:00 PM');
-let toEnd = new Date('07/12/2022 11:00:00 PM');
+let toEnd = new Date('07/12/2022 10:40:00 PM');
 
 // if (now > toStart && now < toEnd) {
 //   startgameBtn.disabled = false;
@@ -20,10 +20,10 @@ let toEnd = new Date('07/12/2022 11:00:00 PM');
 //   startgameBtn.innerText = "Event ended or not started yet";
 // }
 
-if( now > toStart && now < toEnd) {
+if (now > toStart && now < toEnd) {
   startgameBtn.disabled = false;
   startgameBtn.innerText = "Enter event";
-} else if(now < toStart){
+} else if (now < toStart) {
   startgameBtn.disabled = true;
   var trivia_timer = setInterval(Timer, 1000);
 } else {
@@ -33,18 +33,18 @@ if( now > toStart && now < toEnd) {
 
 
 
-function Timer(){ 
+function Timer() {
   let current = new Date().getTime();
   let startTime = toStart.getTime();
   let diff = startTime - current;
 
-  let hour = Math.floor( (diff % (1000*60*60*24)) / (1000*60*60) );
-  let min = Math.floor( (diff % (1000*60*60)) / (1000*60) );
-  let sec = Math.floor( (diff % (1000*60)) / (1000) );
+  let hour = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  let min = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+  let sec = Math.floor((diff % (1000 * 60)) / (1000));
 
-  startgameBtn.innerText = "Event will start in " + hour + ":" + min + ":" + sec; 
-  
-  if(hour <= 0 && min <= 0 && sec <= 0) {
+  startgameBtn.innerText = "Event will start in " + hour + ":" + min + ":" + sec;
+
+  if (hour <= 0 && min <= 0 && sec <= 0) {
     stopTimer();
     startgameBtn.innerText = "Enter event";
     startgameBtn.disabled = false;
