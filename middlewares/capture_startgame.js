@@ -7,7 +7,7 @@ const startgame = (req, res, next) => {
         next();
     } else {
         console.log("no");
-        res.render('treasureHunt/hunt_index', { alert: 'Game time is 10:20 to 11:05 pm' })
+        res.render('captureFlag/capture_index', { alert: 'Game time is 10:20 to 11:05 pm' })
     }
 }
 

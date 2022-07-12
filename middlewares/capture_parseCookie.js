@@ -7,7 +7,7 @@ const parseCookie = (req, res, next) => {
         next();
 
     } else {
-        res.redirect('/hunt')
+        res.redirect('/capture')
     }
 }
 module.exports = parseCookie;

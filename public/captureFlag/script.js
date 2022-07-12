@@ -73,7 +73,7 @@ function closeAlert(id) {
 
 
 function requestServer() {
-        fetch(`/hunt/checkAnswer/${que}/${ans}`)
+        fetch(`/capture/checkAnswer/${que}/${ans}`)
         .then(result => result.json())
         .then(result => {
         // console.log(result.cluemein);

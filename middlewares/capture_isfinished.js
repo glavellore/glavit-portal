@@ -1,4 +1,4 @@
-const Hunt_question = require('../models/hunt/hunt_questionModel');
+const Capture_question = require('../models/capture/capture_questionModel');
 
 const isfinished = (req, res, next) => {
     let current = Date.now();
@@ -6,7 +6,7 @@ const isfinished = (req, res, next) => {
 
     if(current < endtime) {
             
-            Hunt_question.findOne({number: req.body.question}, (err, found) => {
+            Capture_question.findOne({number: req.body.question}, (err, found) => {
                 if(!err && found) {
                     let processed_ans = req.body.answer.replace(/ /g, "").trim().toLowerCase();
                     let processed_found = found.answer.replace(/ /g, "").trim().toLowerCase();
@@ -18,19 +18,19 @@ const isfinished = (req, res, next) => {
                             number: found.number
                         }
             
-                        res.render('treasureHunt/question', {question: ques})
+                        res.render('captureFlag/question', {question: ques})
                     }
                     
                 } else {
                     alert = 'some error occured, login again. dont worry your ans are saved';
                     console.log(err);
-                    res.render('treasureHunt/hunt_index', {alert: alert});
+                    res.render('captureFlag/capture_index', {alert: alert});
                 }
             })
 
     } else {
-        // res.render('treasureHunt/hunt_index', {alert: 'Time up! Stay tuned to our social media for results. Thank You ❤'})
-        res.redirect('/hunt/finish');
+        // res.render('captureFlag/hunt_index', {alert: 'Time up! Stay tuned to our social media for results. Thank You ❤'})
+        res.redirect('/capture/finish');
     }
 }
 
