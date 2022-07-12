@@ -15,17 +15,16 @@ const app = express();
 const mongoose = require('mongoose');
 
 //ejs view engines
-app.set('view engine','ejs');
+app.set('view engine', 'ejs');
 // app.set('views', path.join(__dirname, './views'))
 
 //middleware and static files
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser(process.env.SESSION_SECRET));
 
 const uri = process.env.ATLAS_URI;
-// const uri = `${"mongodb+srv://"+process.env.ATLAS_USER+":"+process.env.ATLAS_PASSWORD+"@"+process.env.ATLAS_CLUSTER+".fzmhp.mongodb.net/"+process.env.ATLAS_DB_NAME+"?retryWrites=true&w=majority"}`;
 // const uri = 'mongodb://localhost:27017/storeDB';
-mongoose.connect(uri, { useNewUrlParser:true, useUnifiedTopology:true, useCreateIndex: true, useFindAndModify: false });
+mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false });
 const db = mongoose.connection;
 
 db.on("error", (err) => {
@@ -37,23 +36,23 @@ db.once("open", () => {
 });
 
 //webpage display and load
-app.use('/',express.static(__dirname + '/public'));
-app.use('/',express.static(__dirname + "/node_modules/@fortawesome"));
+app.use('/', express.static(__dirname + '/public'));
+app.use('/', express.static(__dirname + "/node_modules/@fortawesome"));
 
-app.use('/hunt',express.static(__dirname + '/public'));
-app.use('/hunt',express.static(__dirname + "/node_modules/@fortawesome"));
+app.use('/hunt', express.static(__dirname + '/public'));
+app.use('/hunt', express.static(__dirname + "/node_modules/@fortawesome"));
 
-app.use('/capture',express.static(__dirname + '/public'));
-app.use('/capture',express.static(__dirname + "/node_modules/@fortawesome"));
+app.use('/capture', express.static(__dirname + '/public'));
+app.use('/capture', express.static(__dirname + "/node_modules/@fortawesome"));
 
-app.use('/trivia',express.static(__dirname + '/public'));
-app.use('/trivia',express.static(__dirname + "/node_modules/@fortawesome"));
+app.use('/trivia', express.static(__dirname + '/public'));
+app.use('/trivia', express.static(__dirname + "/node_modules/@fortawesome"));
 
-app.use('/fliq',express.static(__dirname + '/public'));
-app.use('/fliq',express.static(__dirname + "/node_modules/@fortawesome"));
+app.use('/fliq', express.static(__dirname + '/public'));
+app.use('/fliq', express.static(__dirname + "/node_modules/@fortawesome"));
 
-app.use('/admin',express.static(__dirname + '/public'));
-app.use('/admin',express.static(__dirname + "/node_modules/@fortawesome"));
+app.use('/admin', express.static(__dirname + '/public'));
+app.use('/admin', express.static(__dirname + "/node_modules/@fortawesome"));
 // app.use(bodyparser.urlencoded({extended:true}));
 
 // main router
@@ -68,7 +67,7 @@ app.use('/', mainRouter);
 const port = process.env.PORT || 3000;
 
 app.listen(port, () => {
-    console.log("Server is running on PORT " + port +"...")
+    console.log("Server is running on PORT " + port + "...")
 });
 
 app.get('*', (req, res) => {
