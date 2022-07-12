@@ -1,7 +1,7 @@
 const startgame = (req, res, next) => {
     let current = Date.now();
-    let toStartTime = new Date('05/15/2021 10:20:00 PM');
-    let endtime = new Date('05/15/2021 11:05:00 PM');
+    let toStartTime = new Date('07/12/2022 05:15:00 PM');
+    let endtime = new Date('07/12/2022 06:15:00 PM');
     if( current > toStartTime && current < endtime) {
         console.log("yes");
         next();
