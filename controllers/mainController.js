@@ -6,6 +6,7 @@ var previous;
 var alert = '';
 
 const home = async (req, res) => {
+
     Event.find({complete: false}, (err, found) => {
         if(!err) {
             spotlight = found;

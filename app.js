@@ -5,6 +5,7 @@ const cookieParser = require('cookie-parser');
 
 const mainRouter = require('./routes/mainRouter');
 const huntRouter = require('./routes/huntRouter');
+const captureRouter = require('./routes/captureRouter');
 const triviaRouter = require('./routes/triviaRouter');
 const fliqRouter = require('./routes/fliqRouter');
 const adminRouter = require('./routes/adminRouter');
@@ -21,7 +22,8 @@ app.set('view engine','ejs');
 app.use(express.urlencoded({extended: true}));
 app.use(cookieParser(process.env.SESSION_SECRET));
 
-const uri = `${"mongodb+srv://"+process.env.ATLAS_USER+":"+process.env.ATLAS_PASSWORD+"@"+process.env.ATLAS_CLUSTER+".fzmhp.mongodb.net/"+process.env.ATLAS_DB_NAME+"?retryWrites=true&w=majority"}`;
+const uri = process.env.ATLAS_URI;
+// const uri = `${"mongodb+srv://"+process.env.ATLAS_USER+":"+process.env.ATLAS_PASSWORD+"@"+process.env.ATLAS_CLUSTER+".fzmhp.mongodb.net/"+process.env.ATLAS_DB_NAME+"?retryWrites=true&w=majority"}`;
 // const uri = 'mongodb://localhost:27017/storeDB';
 mongoose.connect(uri, { useNewUrlParser:true, useUnifiedTopology:true, useCreateIndex: true, useFindAndModify: false });
 const db = mongoose.connection;
@@ -41,6 +43,9 @@ app.use('/',express.static(__dirname + "/node_modules/@fortawesome"));
 app.use('/hunt',express.static(__dirname + '/public'));
 app.use('/hunt',express.static(__dirname + "/node_modules/@fortawesome"));
 
+app.use('/capture',express.static(__dirname + '/public'));
+app.use('/capture',express.static(__dirname + "/node_modules/@fortawesome"));
+
 app.use('/trivia',express.static(__dirname + '/public'));
 app.use('/trivia',express.static(__dirname + "/node_modules/@fortawesome"));
 
@@ -53,6 +58,7 @@ app.use('/admin',express.static(__dirname + "/node_modules/@fortawesome"));
 
 // main router
 app.use('/hunt', huntRouter);
+app.use('/capture', captureRouter);
 app.use('/trivia', triviaRouter);
 app.use('/fliq', fliqRouter);
 app.use('/admin', adminRouter);
