@@ -2,9 +2,9 @@ const express = require('express');
 const router = express.Router();
 
 const captureController = require('../controllers/captureController');
-const isfinished = require('../middlewares/isfinished');
-const parseCookie = require('../middlewares/parseCookie');
-const startgame = require('../middlewares/startgame');
+const isfinished = require('../middlewares/capture_isfinished');
+const parseCookie = require('../middlewares/capture_parseCookie');
+const startgame = require('../middlewares/capture_startgame');
 
 
 router.get('/', captureController.index);
