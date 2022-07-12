@@ -6,19 +6,19 @@ ansInput.addEventListener('keyup', function () {
   ans = ansInput.value;
 });
 
-const startgameBtn = document.getElementById('startgame');
+// const startgameBtn = document.getElementById('startgame');
 
-let now = Date.now();
-let toStart = new Date('07/12/2022 06:00:00 PM');
-let toEnd = new Date('07/12/2022 08:00:00 PM');
+// let now = Date.now();
+// let toStart = new Date('07/12/2022 06:00:00 PM');
+// let toEnd = new Date('07/12/2022 10:00:00 PM');
 
-if (now > toStart && now < toEnd) {
-  startgameBtn.disabled = false;
-  startgameBtn.innerText = "Enter event";
-} else {
-  startgameBtn.disabled = true;
-  startgameBtn.innerText = "Event ended or not started yet";
-}
+// if (now > toStart && now < toEnd) {
+//   startgameBtn.disabled = false;
+//   startgameBtn.innerText = "Enter event";
+// } else {
+//   startgameBtn.disabled = true;
+//   startgameBtn.innerText = "Event ended or not started yet";
+// }
 
 const submitBtn = document.getElementById('submitBtn');
 const rightAnsAlert = document.getElementById('rightAnsAlert');
@@ -30,7 +30,7 @@ submitBtn.disabled = true;
 const timer = document.getElementById('timer');
 
 
-let endtime = new Date('07/12/2022 08:00:00 PM').getTime();
+let endtime = new Date('07/12/2022 10:00:00 PM').getTime();
 
 
 

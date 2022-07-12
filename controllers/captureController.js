@@ -3,6 +3,8 @@ var alert = '';
 const Capture_question = require('../models/capture/capture_questionModel');
 const Capture_player = require('../models/capture/capture_playerModel');
 
+const no_of_ques = 15;
+
 const index = (req, res) => {
     alert = '';
     res.render('captureFlag/capture_index', { alert: alert });
@@ -62,7 +64,7 @@ const start = (req, res) => {
                     que = "1";
                 }
                 // check if all 15 already done
-                if (found.submit == true || que >= 15) {
+                if (found.submit == true || que >= no_of_ques) {
                     res.render('captureFlag/capture_index', { alert: 'Your response is recorded. Stay tuned to our social media for results. Thank You ❤' })
                 } else {
                     res.cookie("user", found, { signed: true, maxAge: 2 * 60 * 60 * 1000 });
@@ -115,7 +117,7 @@ const nextQue = (req, res) => {
 
             found.lastQue = addToQues;
             found.questions.push(addToQues);
-            if (upcomingQue >= 15) {
+            if (upcomingQue >= no_of_ques) {
                 found.submit = true;
             }
             found.save(error => {
@@ -125,7 +127,7 @@ const nextQue = (req, res) => {
                     temp.lastQue = addToQues;
                     res.cookie("user", temp, { signed: true, maxAge: 2 * 60 * 60 * 1000 });
 
-                    if (upcomingQue <= 15) {
+                    if (upcomingQue <= no_of_ques) {
                         Capture_question.findOne({ number: upcomingQue.toString() }, (err, found) => {
                             if (!err && found) {
                                 const ques = {
