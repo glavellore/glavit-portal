@@ -3,7 +3,7 @@ var alert = '';
 const Capture_question = require('../models/capture/capture_questionModel');
 const Capture_player = require('../models/capture/capture_playerModel');
 
-const no_of_ques = 12;
+const no_of_ques = 13;
 
 const index = (req, res) => {
     alert = '';
