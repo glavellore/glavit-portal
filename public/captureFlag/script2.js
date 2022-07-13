@@ -30,7 +30,7 @@ submitBtn.disabled = true;
 const timer = document.getElementById('timer');
 
 
-let endtime = new Date('07/14/2022 05:00:00 PM').getTime();
+let endtime = new Date('07/14/2022 04:00:00 PM').getTime();
 
 
 
@@ -43,11 +43,15 @@ var trivia_timer = setInterval(Timer, 1000);
 function Timer() {
   let current = new Date().getTime();
 
+  // console.log(current);
+
   let diff = endtime - current;
 
   let hour = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
   let min = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
   let sec = Math.floor((diff % (1000 * 60)) / (1000));
+
+  // console.log(hour + ":" + min + ":" + sec);
 
   timer.innerText = hour + ":" + min + ":" + sec;
 
