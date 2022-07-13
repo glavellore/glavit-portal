@@ -9,7 +9,7 @@
 const startgameBtn = document.getElementById('startgame');
 
 let now = Date.now();
-let toStart = new Date('07/13/2022 04:00:00 PM');
+let toStart = new Date('07/13/2022 05:00:00 PM');
 let toEnd = new Date('07/14/2022 04:00:00 PM');
 
 // if (now > toStart && now < toEnd) {
